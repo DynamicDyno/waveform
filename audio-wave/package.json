@@ -2,6 +2,7 @@
   "name": "audio-wave",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/waveform",
   "dependencies": {
     "@types/jest": "23.3.13",
     "@types/node": "10.12.21",
