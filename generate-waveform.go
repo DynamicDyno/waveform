@@ -2,13 +2,12 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"bytes"
 )
 
-func main() {
-	filename := os.Args[1]
+func generate_waveform(filename string) {
+	//filename := os.Args[1]
 	app := "ffmpeg"
 
 	arg0 := "-i"

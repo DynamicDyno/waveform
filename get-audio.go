@@ -7,30 +7,28 @@ import (
 
     "fmt"
     "os"
-    "strings"
     "io"
-    "io/ioutil"
 )
 
-func main() {
-    if len(os.Args) != 2 {
-        fmt.Println("You must supply an alarm name")
-        os.Exit(1)
-    }
+func get_audio(text string) {
+    //if len(os.Args) != 2 {
+    //    fmt.Println("You must supply an alarm name")
+    //    os.Exit(1)
+    //}
 
     // The name of the text file to convert to MP3
-    fileName := os.Args[1]
+    //fileName := os.Args[1]
 
     // Open text file and get it's contents as a string
-    contents, err := ioutil.ReadFile(fileName)
-    if err != nil {
-        fmt.Println("Got error opening file " + fileName)
-        fmt.Print(err.Error())
-        os.Exit(1)
-    }
+    //contents, err := ioutil.ReadFile(fileName)
+    //if err != nil {
+    //    fmt.Println("Got error opening file " + fileName)
+    //    fmt.Print(err.Error())
+    //    os.Exit(1)
+    //}
 
     // Convert bytes to string
-    s := string(contents[:])
+    //s := string(contents[:])
 
     // Initialize a session that the SDK uses to load
     // credentials from the shared credentials file. (~/.aws/credentials).
@@ -42,7 +40,7 @@ func main() {
     svc := polly.New(sess)
 
     // Output to MP3 using voice Joanna
-    input := &polly.SynthesizeSpeechInput{OutputFormat: aws.String("mp3"), Text: aws.String(s), VoiceId: aws.String("Joanna")}
+    input := &polly.SynthesizeSpeechInput{OutputFormat: aws.String("mp3"), Text: aws.String(text), VoiceId: aws.String("Joanna")}
 
     output, err := svc.SynthesizeSpeech(input)
     if err != nil {
@@ -52,8 +50,9 @@ func main() {
     }
 
     // Save as MP3
-    names := strings.Split(fileName, ".")
-    name := names[0]
+    //names := strings.Split(fileName, ".")
+    
+    name := "output"
     mp3File := name + ".mp3"
 
     outFile, err := os.Create(mp3File)

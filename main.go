@@ -1,10 +1,11 @@
 package main
 
 import (
-    "encoding/json"
-    "log"
-    "net/http"
-    "github.com/gorilla/mux"
+	"fmt"
+	"encoding/json"
+	"log"
+	"net/http"
+	"github.com/gorilla/mux"
 )
 
 type Audio struct {
@@ -13,14 +14,20 @@ type Audio struct {
 
 // our main function
 func main() {
-		router := mux.NewRouter()
-		router.HandleFunc("/text/{string}", SubmitText).Methods("POST")
-    log.Fatal(http.ListenAndServe(":8000", router))
+	fmt.Println("Listening on port 8000")
+	router := mux.NewRouter()
+	router.HandleFunc("/text/{tts_string}", SubmitText).Methods("GET")
+	log.Fatal(http.ListenAndServe(":8000", router))
 }
 
 func SubmitText(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
+	//fmt.Println("Serving request.")
+	//fmt.Println("??")
+	vars := mux.Vars(r)
+	//fmt.Println("test")
+	fmt.Println("Getting audio for " + vars["tts_string"])
+	get_audio(vars["tts_string"])
 	var audio Audio
 	_ = json.NewDecoder(r.Body).Decode(&audio)
-	json.NewEncoder(w).Encode(audio)
+	json.NewEncoder(w).Encode(vars)
 }
