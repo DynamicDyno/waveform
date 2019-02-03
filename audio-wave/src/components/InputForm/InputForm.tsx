@@ -20,16 +20,17 @@ class InputForm extends Component<Props> {
   onChange = (event: React.FormEvent<HTMLInputElement>) => {
     this.setState({textValue: event.currentTarget.value});
   }
-  
-  onFocus = (event: React.FormEvent<HTMLInputElement>) => {
-    // if(event.currentTarget.value.trim() !== '') {
-    //   event.currentTarget.parentElement
-    // }
-    console.log(event.currentTarget.value);
-  }
 
-  onBlur = (event: React.FormEvent<HTMLInputElement>) => {
-    console.log('blur');
+  getAudioAndImage = () => {
+    fetch(`http://68.183.30.161:8080/waveform/text/${this.state.textValue}`)
+      .then(response => {
+        if(!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response;
+      })
+      .then(response => response.json())
+      .then(json => this.props.receiveAudioImage(json))
   }
   
   render() {
@@ -42,8 +43,7 @@ class InputForm extends Component<Props> {
             className="input__field input__field--kozakura"
             value={this.state.textValue}
             onChange={this.onChange}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
+            autoFocus
             autoComplete="off" />
 					<label className="input__label input__label--kozakura" htmlFor="input-7">
 						<span className="input__label-content input__label-content--kozakura" data-content="Text">Text</span>
@@ -59,18 +59,6 @@ class InputForm extends Component<Props> {
 				</span>
       </form>
     );
-  }
-
-  getAudioAndImage = () => {
-    fetch(`http://68.183.30.161:8080/waveform/text/${this.state.textValue}`)
-      .then(response => {
-        if(!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response;
-      })
-      .then(response => response.json())
-      .then(json => this.props.receiveAudioImage(json))
   }
 }
 

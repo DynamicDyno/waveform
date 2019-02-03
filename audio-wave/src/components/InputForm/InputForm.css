@@ -1,6 +1,4 @@
 .input-form {
-  display: flex;
-  justify-content: center;
   max-width: 720px;
   font-size: 1.5em;
   margin: 20px auto 0;
@@ -27,12 +25,12 @@
   text-transform: uppercase;
   font-size: .6em;
   font-weight: 500;
+  transition: all .2s ease-in;
 }
 
 .input-form__submit:hover {
   background-color: #73A0CC;
   color: #fff;
-  transition: all .35s ease-in;
 }
 
 .input-form__submit:focus {

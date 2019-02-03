@@ -10,14 +10,14 @@ type Props = {
 class Display extends Component<Props> {
   render() {
     return (
-      <div className="display">
+      <section className="display">
         <img className="display__image" src={this.props.imageSrc} />
         <audio
           className="display__audio"
           controls={(this.props.audioSrc) ? true : false}
           src={this.props.audioSrc}
           autoPlay={true} />
-      </div>
+      </section>
     );
   }
 }
