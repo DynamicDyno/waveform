@@ -11,7 +11,7 @@ class Display extends Component<Props> {
   render() {
     return (
       <div className="display">
-        <img src={this.props.imageSrc} />
+        <img className="display__image" src={this.props.imageSrc} />
         <audio
           className="display__audio"
           controls={(this.props.audioSrc) ? true : false}
