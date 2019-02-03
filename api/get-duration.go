@@ -5,14 +5,10 @@ import (
 	"os/exec"
 	"bytes"
 	"strings"
-	"path/filepath"
 )
 
 func get_duration(filename string) (string) {
-	//filename := os.Args[1]
 	app := "ffprobe"
-
-	filenameNoSuffix := strings.TrimSuffix(filename, filepath.Ext(filename))
 
 	arg0 := "-i"
 	arg1 := filename
@@ -34,7 +30,8 @@ func get_duration(filename string) (string) {
 		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
 	}
 
-	fmt.Println("Result: " + out.String())
+	// trim line breaks
+	duration := strings.TrimSuffix(out.String(), "\n")
 
-	return filenameNoSuffix + ".png"
+	return duration
 }

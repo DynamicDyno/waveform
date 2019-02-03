@@ -11,8 +11,9 @@ import (
 )
 
 type Media struct {
-	Audio string `json:"audio"`
-	Wave  string `json:"wave"`
+	Audio     string  `json:"audio"`
+	Wave      string  `json:"wave"`
+	Duration  string  `json:"duration"`
 }
 
 // our main function
@@ -29,14 +30,16 @@ func main() {
 func SubmitText(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	fmt.Println("Getting audio for " + vars["tts_string"])
-	
+
 	audio_filename := get_audio(vars["tts_string"])
 	wave_filename := generate_waveform(audio_filename)
+	duration := get_duration(audio_filename)
+
 	audio_uri := getAbsoluteUrl(audio_filename)
 	wave_uri := getAbsoluteUrl(wave_filename)
-	
-	media := Media{audio_uri, wave_uri}
-	
+
+	media := Media{audio_uri, wave_uri, duration}
+
 	json.NewEncoder(w).Encode(media)
 }
 
