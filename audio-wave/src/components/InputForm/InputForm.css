@@ -1,0 +1,36 @@
+.input-form {
+  display: flex;
+  justify-content: center;
+  max-width: 720px;
+  font-size: 1.5em;
+  margin: 20px auto 0;
+}
+
+.input__field {
+  box-sizing: border-box;
+  padding-right: 140px;
+}
+
+.input__label {
+  color: #696969;
+}
+
+.input-form__submit {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  padding: 0 20px;
+  height: 78px;
+  background: none;
+  border: none;
+  color: #73A0CC;
+  text-transform: uppercase;
+  font-size: .6em;
+  font-weight: 500;
+}
+
+.input-form__submit:hover {
+  background-color: #73A0CC;
+  color: #fff;
+  transition: all .35s ease-in;
+}
