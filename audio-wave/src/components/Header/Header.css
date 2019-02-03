@@ -1,6 +1,48 @@
 .header {
   height: 80px;
   background-color: #2A2A30;
+  box-shadow: 0 0 50px 0 rgba(255, 255, 255, .05);
+}
+
+.header__link {
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.header__sound-waves {
+  width: 40px;
+  padding-right: 10px;
+}
+
+.header__link:hover > .header__sound-waves {
+  animation: jello-vertical 0.9s infinite both;
+  /* animation: wave-logo .5s; */
+}
+
+@keyframes jello-vertical {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  40% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  50% {
+    transform: scale3d(0.85, 1.15, 1);
+  }
+  65% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  75% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
 }
 
 .header__title {

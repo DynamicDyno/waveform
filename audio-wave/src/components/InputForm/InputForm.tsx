@@ -43,7 +43,6 @@ class InputForm extends Component<Props> {
             className="input__field input__field--kozakura"
             value={this.state.textValue}
             onChange={this.onChange}
-            autoFocus
             autoComplete="off" />
 					<label className="input__label input__label--kozakura" htmlFor="input-7">
 						<span className="input__label-content input__label-content--kozakura" data-content="Text">Text</span>
