@@ -17,7 +17,7 @@ func generate_waveform(filename string) (string) {
 	arg0 := "-i"
 	arg1 := filename
 	arg2 := "-filter_complex"
-	arg3 := "showwavespic=s=640x120"
+	arg3 := "showwavespic=s=672x500:colors=#73A0CC"
 	arg4 := "-frames:v"
 	arg5 := "1"
 	arg6 := filenameNoSuffix + ".png"
