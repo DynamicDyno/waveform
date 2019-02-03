@@ -5,7 +5,7 @@
 
 .display__image {
   display: block;
-  margin: 0 1.5em;
+  margin: calc(100% - 3em);
 }
 
 .display__audio {
