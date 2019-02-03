@@ -1,15 +1,16 @@
 .display {
-  margin: -140px auto 0;
+  margin: -130px auto 0;
   max-width: 720px;
 }
 
 .display__image {
   display: block;
-  margin: calc(100% - 3em);
+  max-width: calc(100% - 3em);
+  margin: 0 1.5em;
 }
 
 .display__audio {
   display: block;
   width: calc(100% - 3em);
-  margin: -90px 1.5em 0;
+  margin: -80px 1.5em 0;
 }
