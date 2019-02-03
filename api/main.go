@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"github.com/gorilla/mux"
+	"github.com/gorilla/handlers"
 )
 
 type Media struct {
@@ -17,9 +18,12 @@ type Media struct {
 // our main function
 func main() {
 	fmt.Println("Listening on port 8080")
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"}) 
+	originsOk := handlers.AllowedOrigins([]string{"*"}) 
+	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 	router := mux.NewRouter()
 	router.HandleFunc("/waveform/text/{tts_string}", SubmitText).Methods("GET")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", handlers.CORS(originsOk, headersOk, methodsOk)(router)))
 }
 
 func SubmitText(w http.ResponseWriter, r *http.Request) {
@@ -28,15 +32,16 @@ func SubmitText(w http.ResponseWriter, r *http.Request) {
 	
 	audio_filename := get_audio(vars["tts_string"])
 	wave_filename := generate_waveform(audio_filename)
-	audio_uri := getWebUri(audio_filename)
-	wave_uri := getWebUri(wave_filename)
+	audio_uri := getAbsoluteUrl(audio_filename)
+	wave_uri := getAbsoluteUrl(wave_filename)
 	
 	media := Media{audio_uri, wave_uri}
 	
 	json.NewEncoder(w).Encode(media)
 }
 
-func getWebUri(path string) (string) {
-	uri := strings.Replace(path, "../audio-wave/build/", "", -1)
-	return uri
+func getAbsoluteUrl(path string) (string) {
+	relative_url := strings.Replace(path, "../audio-wave/build/", "", -1)
+	absolute_url := "http://68.183.30.161/waveform/" + relative_url;
+	return absolute_url
 }
