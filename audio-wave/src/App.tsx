@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Display, Header, InputForm } from './components/';
+import './css/normalize.css';
 import './App.css';
+import './css/fonts/bebas-neue.css';
+
+type ApiJson = {
+  audio: string,
+  wave: string,
+}
 
 class App extends Component {
+  state = {
+    audioSrc: '',
+    imageSrc: '',
+  }
+
+  receiveAudioImage = (json: ApiJson) => {
+    console.log(json);
+    this.setState({
+      audioSrc: json.audio,
+      imageSrc: json.wave,
+    });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header />
+        <InputForm receiveAudioImage={this.receiveAudioImage} />
+        <Display audioSrc={this.state.audioSrc} imageSrc={this.state.imageSrc} />
       </div>
     );
   }
