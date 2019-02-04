@@ -4,6 +4,7 @@ import '../../css/codrops.css';
 import './InputForm.css';
 
 type Props = {
+  onSubmit: Function,
   receiveAudioImage: Function,
 }
 
@@ -24,6 +25,8 @@ class InputForm extends Component<Props> {
   }
 
   getAudioAndImage = () => {
+    this.props.onSubmit();
+    
     fetch(`http://68.183.30.161:8080/waveform/text/${this.state.textValue}`)
       .then(response => {
         if(!response.ok) {

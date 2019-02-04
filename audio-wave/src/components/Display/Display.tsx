@@ -22,15 +22,16 @@ class Display extends Component<Props, State> {
 
   componentDidMount() {
     console.log('did mount');
-  }
-
-  componentDidUpdate() {
-    console.log('did update');
     if(this.props.audioSrc !== ''
       && this.props.audioSrc !== this.state.lastPlayed
       && this.state.isPlaying === false) {
       this.playAudio();
     }
+  }
+
+  componentDidUpdate() {
+    console.log('did update');
+    
   }
 
   getTransition = () => {
@@ -72,7 +73,7 @@ class Display extends Component<Props, State> {
           <div className="display__time-marker" style={this.getTransition()} data-duration={this.props.duration}></div>
           {this.getPlayButton()}
         </div>
-        
+
         <audio
           className="display__audio"
           src={this.props.audioSrc}
