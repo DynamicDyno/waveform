@@ -7,12 +7,14 @@ import './css/fonts/bebas-neue.css';
 type ApiJson = {
   audio: string,
   wave: string,
+  duration: string,
 }
 
 class App extends Component {
   state = {
     audioSrc: '',
     imageSrc: '',
+    duration: '0s',
   }
 
   receiveAudioImage = (json: ApiJson) => {
@@ -20,6 +22,7 @@ class App extends Component {
     this.setState({
       audioSrc: json.audio,
       imageSrc: json.wave,
+      duration: json.duration,
     });
   }
 
@@ -28,7 +31,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <InputForm receiveAudioImage={this.receiveAudioImage} />
-        <Display audioSrc={this.state.audioSrc} imageSrc={this.state.imageSrc} />
+        <Display
+          audioSrc={this.state.audioSrc}
+          imageSrc={this.state.imageSrc}
+          duration={this.state.duration} />
       </div>
     );
   }

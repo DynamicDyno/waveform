@@ -14,7 +14,9 @@ class InputForm extends Component<Props> {
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.getAudioAndImage();
+    if(this.state.textValue !== '') {
+      this.getAudioAndImage();
+    }
   }
 
   onChange = (event: React.FormEvent<HTMLInputElement>) => {
