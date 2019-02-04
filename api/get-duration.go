@@ -32,6 +32,7 @@ func get_duration(filename string) (string) {
 
 	// trim line breaks
 	duration := strings.TrimSuffix(out.String(), "\n")
+	duration = duration + "s"
 
 	return duration
 }

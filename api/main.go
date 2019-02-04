@@ -16,14 +16,15 @@ type Media struct {
 	Duration  string  `json:"duration"`
 }
 
-// our main function
 func main() {
 	fmt.Println("Listening on port 8080")
+
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"}) 
 	originsOk := handlers.AllowedOrigins([]string{"*"}) 
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 	router := mux.NewRouter()
 	router.HandleFunc("/waveform/text/{tts_string}", SubmitText).Methods("GET")
+
 	log.Fatal(http.ListenAndServe(":8080", handlers.CORS(originsOk, headersOk, methodsOk)(router)))
 }
 
@@ -44,7 +45,7 @@ func SubmitText(w http.ResponseWriter, r *http.Request) {
 }
 
 func getAbsoluteUrl(path string) (string) {
-	relative_url := strings.Replace(path, "../audio-wave/build/", "", -1)
-	absolute_url := "http://68.183.30.161/waveform/" + relative_url;
+	relative_url := strings.Replace(path, "/var/www/", "", -1)
+	absolute_url := "http://68.183.30.161/" + relative_url;
 	return absolute_url
 }
