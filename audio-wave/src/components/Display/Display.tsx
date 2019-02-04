@@ -21,17 +21,11 @@ class Display extends Component<Props, State> {
   }
 
   componentDidMount() {
-    console.log('did mount');
     if(this.props.audioSrc !== ''
       && this.props.audioSrc !== this.state.lastPlayed
       && this.state.isPlaying === false) {
       this.playAudio();
     }
-  }
-
-  componentDidUpdate() {
-    console.log('did update');
-    
   }
 
   getTransition = () => {
