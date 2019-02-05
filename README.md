@@ -26,13 +26,15 @@ go get github.com/gorilla/handlers
 
 ## Install and run
 
-API
+### API
+
 ```
 cd api
 ./api
 ```
 
-React app
+### React app
+
 ```
 cd audio-wave
 yarn
@@ -45,9 +47,9 @@ There's only one:
 
 ### GET /waveform/text/:string
 
-URI parameters:
+#####URI parameters:
 
-- string: The string to make a waveform for
+- **string**: The string to make a waveform for
 
 example response body:
 
