@@ -55,9 +55,8 @@ example response body:
 
 ```
 {
-  audio: "http://68.183.30.161/assets/audio/audio-694371821.mp3",
-  wave: "http://68.183.30.161/assets/images/audio-694371821.png",
-  duration: "1.253833s"
+  "audio":"http://68.183.30.161/assets/audio/audio-252134362.mp3","wave":"http://68.183.30.161/assets/images/audio-252134362.png",
+  "duration":"2.377167s"
 }
 ```
 
