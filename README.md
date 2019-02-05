@@ -7,7 +7,8 @@ Show the waveform of an audio sample. You can play with a [demo of the app here]
 
 ### Dependencies
 
-Install ffmpeg
+Install ffmpeg (instructions for debian/ubuntu:)
+
 ```
 sudo add-apt-repository ppa:jonathonf/ffmpeg-4
 sudo apt-get update
