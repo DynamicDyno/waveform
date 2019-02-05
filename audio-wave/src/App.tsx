@@ -4,6 +4,8 @@ import './css/normalize.css';
 import './App.css';
 import './css/fonts/bebas-neue.css';
 
+export type Props = { }
+
 type ApiJson = {
   audio: string,
   wave: string,
@@ -12,6 +14,12 @@ type ApiJson = {
 }
 
 class App extends Component {
+  constructor(props: Props) {
+    super(props);
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
   state = {
     audioSrc: '',
     imageSrc: '',
@@ -28,7 +36,7 @@ class App extends Component {
     });
   }
 
-  onSubmit = () => {
+  onSubmit() {
     this.setState({ isLoading: true });
   }
 
@@ -47,7 +55,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header />
         <InputForm 
           onSubmit={this.onSubmit}

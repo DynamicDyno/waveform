@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { MdPlayCircleFilled } from 'react-icons/md';
 import './Display.css';
 
-type Props = {
+export type Props = {
   audioSrc: string,
   imageSrc: string,
   duration: string,
@@ -14,6 +14,13 @@ type State = {
 }
 
 class Display extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    
+    this.playAudio = this.playAudio.bind(this);
+    this.onPlayButtonClick = this.onPlayButtonClick.bind(this);
+  }
+
   audioRef = React.createRef<HTMLAudioElement>();
   state = {
     isPlaying: false,
@@ -40,11 +47,11 @@ class Display extends Component<Props, State> {
     }
   }
 
-  onPlayButtonClick = () => {
+  onPlayButtonClick() {
     this.playAudio();
   }
 
-  playAudio = () => {
+  playAudio() {
     const audio = this.audioRef.current;
     if(audio) {
       audio.play();

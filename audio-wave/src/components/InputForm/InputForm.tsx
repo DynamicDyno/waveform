@@ -3,28 +3,36 @@ import logo from './logo.svg';
 import '../../css/codrops.css';
 import './InputForm.css';
 
-type Props = {
+export type Props = {
   onSubmit: Function,
   receiveAudioImage: Function,
 }
 
 class InputForm extends Component<Props> {
+  constructor(props: Props) {
+    super(props);
+    
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.getAudioAndImage = this.getAudioAndImage.bind(this);
+  }
+
   state = {
     textValue: '',
   }
 
-  handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if(this.state.textValue !== '') {
       this.getAudioAndImage();
     }
   }
 
-  onChange = (event: React.FormEvent<HTMLInputElement>) => {
+  onChange(event: React.FormEvent<HTMLInputElement>) {
     this.setState({textValue: event.currentTarget.value});
   }
 
-  getAudioAndImage = () => {
+  getAudioAndImage() {
     this.props.onSubmit();
     
     fetch(`http://68.183.30.161:8080/waveform/text/${this.state.textValue}`)
