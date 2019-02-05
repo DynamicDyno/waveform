@@ -28,6 +28,7 @@ class App extends Component {
   }
 
   receiveAudioImage = (json: ApiJson) => {
+    console.log(json);
     this.setState({
       audioSrc: json.audio,
       imageSrc: json.wave,

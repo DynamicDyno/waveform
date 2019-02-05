@@ -1,11 +1,11 @@
-## Waveform
+# Waveform
 
 Show the waveform of an audio sample. You can play with a [demo of the app here](http://68.183.30.161/waveform/). There are two projects in this repo:
 
 1. api- backend API written in Golang
 2. audiowave- frontend React app
 
-### Dependencies
+## Dependencies
 
 Install ffmpeg (instructions for debian/ubuntu:)
 
@@ -24,7 +24,7 @@ go get github.com/gorilla/handlers
 
 ```
 
-### Install and run
+## Install and run
 
 API
 ```
@@ -39,13 +39,33 @@ yarn
 yarn start
 ```
 
-### Tests
+## API Endpoints
+
+There's only one:
+
+### GET /waveform/text/:string
+
+URI parameters:
+
+- string: The string to make a waveform for
+
+example response body:
+
+```
+{
+  audio: "http://68.183.30.161/assets/audio/audio-694371821.mp3",
+  wave: "http://68.183.30.161/assets/images/audio-694371821.png",
+  duration: "1.253833s"
+}
+```
+
+## Tests
 
 In the React app, run `yarn test`.
 
 ![Tests](https://i.imgur.com/O2jZDc6.png?1)
 
-### Responsive
+## Responsive
 
 The app works on screens of any size.
 
