@@ -47,5 +47,5 @@ In the React app, run `yarn test`.
 ### Responsive
 
 The app works on screens of any size.
-https://i.imgur.com/i2V3onT.png?1
-![Tests](https://i.imgur.com/i2V3onT.png?1)
+
+![Responsive](https://i.imgur.com/i2V3onT.png?1)
